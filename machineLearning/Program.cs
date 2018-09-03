@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 
 namespace machineLearning
 {
@@ -6,7 +9,22 @@ namespace machineLearning
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            string[] data = File.ReadAllLines("trainingsample.csv");
+            var rawData = data.Skip(1);
+            var rawDataSplitted = rawData.Select(x => x.Split(','));
+            var rawDataInt = rawDataSplitted.Select(x => x.Select(n => int.Parse(n)));
+            List<int> pixelList = new List<int>();
+            //rawDataInt.Select(x => x.Select(n => pixelList.Add(n)));
+            var records = rawDataInt.Select(x =>
+            new Record
+            {
+                Number = x.First(),
+                Pixels = x.Skip(1).ToArray()
+            }
+            );
+
+            
         }
+      
     }
 }

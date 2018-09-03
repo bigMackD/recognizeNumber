@@ -6,5 +6,7 @@ namespace machineLearning
 {
     class Record
     {
+        public int Number;
+        public int[] Pixels;
     }
 }
