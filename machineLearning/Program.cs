@@ -11,17 +11,17 @@ namespace machineLearning
         {
             string[] data = File.ReadAllLines("trainingsample.csv");
             var rawData = data.Skip(1);
-            var rawDataSplitted = rawData.Select(x => x.Split(','));
-            var rawDataInt = rawDataSplitted.Select(x => x.Select(n => int.Parse(n)));
+            var rawDataSplitted = rawData.Select(x => x.Split(',')).ToArray();
+            //var rawDataInt = rawDataSplitted.Select(x => x).ToArray();
             List<int> pixelList = new List<int>();
-            var records = rawDataInt.Select(x =>
+            var records = rawDataSplitted.Select(x =>
             new Record
             {
-                Number = x.First(),
-                Pixels = x.Skip(1).ToArray()
+                Number = int.Parse(x.First()),
+                Pixels = (x.Skip(1).Select(n => int.Parse(n)).ToArray())
             }
             );
-
+            Console.ReadLine();
             
         }
       
