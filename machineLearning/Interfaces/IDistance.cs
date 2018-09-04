@@ -20,9 +20,12 @@ namespace machineLearning.Interfaces
             }
             else
             {
-                distance = Math.Sqrt(Math.Pow(a[0] - b[0], 2) + Math.Pow(a[1] - b[1], 2));
+                for(int i = 0; i < a.Length; i++)
+                {
+                    distance = +Math.Pow(a[i] - b[i], 2);
+                }
             }
-            return distance;
+            return Math.Sqrt(distance);
         }
     }
 }

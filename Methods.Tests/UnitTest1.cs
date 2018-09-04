@@ -19,5 +19,18 @@ namespace Methods.Tests
             //assert
             Assert.AreEqual(2, result);
         }
+        [TestMethod]
+        public void Between_getsThreePoints_returns2dDistance()
+        {
+            //arrange
+            int[] a = { 7, 4, 3 };
+            int[] b = { 7, 4, 2 };
+
+            Distance distance = new Distance();
+            //act
+            var result = distance.Between(a, b);
+            //assert
+            Assert.AreEqual(1, result);
+        }
     }
 }
