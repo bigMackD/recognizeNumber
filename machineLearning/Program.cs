@@ -12,8 +12,6 @@ namespace machineLearning
             string[] data = File.ReadAllLines("trainingsample.csv");
             var rawData = data.Skip(1);
             var rawDataSplitted = rawData.Select(x => x.Split(',')).ToArray();
-            //var rawDataInt = rawDataSplitted.Select(x => x).ToArray();
-            List<int> pixelList = new List<int>();
             var records = rawDataSplitted.Select(x =>
             new Record
             {
