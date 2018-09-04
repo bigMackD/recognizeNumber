@@ -14,7 +14,6 @@ namespace machineLearning
             var rawDataSplitted = rawData.Select(x => x.Split(','));
             var rawDataInt = rawDataSplitted.Select(x => x.Select(n => int.Parse(n)));
             List<int> pixelList = new List<int>();
-            //rawDataInt.Select(x => x.Select(n => pixelList.Add(n)));
             var records = rawDataInt.Select(x =>
             new Record
             {
