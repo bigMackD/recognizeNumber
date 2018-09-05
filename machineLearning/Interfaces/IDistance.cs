@@ -6,24 +6,24 @@ namespace machineLearning.Interfaces
 {
     interface IDistance
     {
-        Result Between(int[] a, int[] b);
+        Result Between(Record a, Record b);
     }
 
     public class Distance : IDistance
     {
-        public Result Between(int[] a, int[] b)
+        public Result Between(Record a, Record b)
         {
             double distance = 0;
-            var number = a[0];
-            if (a.Length != b.Length)
+            var number = a.Number;
+            if (a.Pixels.Length != b.Pixels.Length)
             {
                 throw new Exception("Wrong image size!");
             }
             else
             {
-                for(int i = 1; i < a.Length; i++)
+                for(int i = 1; i < a.Pixels.Length; i++)
                 {
-                    distance = +Math.Pow(a[i] - b[i], 2);
+                    distance = +Math.Pow(a.Pixels[i] - b.Pixels[i], 2);
                 }
             }
             return new Result
@@ -33,5 +33,6 @@ namespace machineLearning.Interfaces
             };
            
         }
+
     }
 }
