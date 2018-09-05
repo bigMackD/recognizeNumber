@@ -20,7 +20,19 @@ namespace machineLearning
             }
             );
             Console.ReadLine();
-            
+
+            string[] dataToValidate = File.ReadAllLines("validationsample.csv");
+            var rawDataToValidate = data.Skip(1);
+            var rawDataSplittedToValidate = rawDataToValidate.Select(x => x.Split(',')).ToArray();
+            var recordsToValidate = rawDataSplittedToValidate.Select(x =>
+            new Record
+            {
+                Number = int.Parse(x.First()),
+                Pixels = (x.Skip(1).Select(n => int.Parse(n)).ToArray())
+            }
+            );
+            Console.ReadLine();
+
         }
       
     }
