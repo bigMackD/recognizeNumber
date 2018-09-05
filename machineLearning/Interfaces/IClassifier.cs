@@ -12,12 +12,9 @@ namespace machineLearning.Interfaces
 
     public class BasicClassifier : IClassifier
     {
-        public int Predict(int[] pixels, Record[] sampleRecords)
+        public int Predict(Record[], Record[] sampleRecords)
         {
-           foreach (var numberToValidate in pixels)
-            {
-                Distance()
-            }
+           
         }
 
         public void Train(IEnumerable<Record> TrainingSet)
