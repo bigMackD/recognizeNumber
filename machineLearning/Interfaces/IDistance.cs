@@ -23,7 +23,7 @@ namespace machineLearning.Interfaces
             {
                 for(int i = 1; i < a.Pixels.Length; i++)
                 {
-                    distance = +Math.Pow(a.Pixels[i] - b.Pixels[i], 2);
+                    distance += Math.Pow(a.Pixels[i] - b.Pixels[i], 2);
                 }
             }
             return new Result
