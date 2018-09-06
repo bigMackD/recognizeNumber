@@ -37,8 +37,10 @@ namespace machineLearning
             var testArray = records.ToArray();
             var testFirst = recordsToValidate.First();
             IClassifier classifier = new BasicClassifier();
-            var result = classifier.Predict(testFirst, testArray);
-            
+            var result =  classifier.Predict(testFirst, testArray).ToArray();
+            var firstResultD = result[0].Distance;
+            var firstResultN = result[0].Number;
+            Console.WriteLine($"Number:{firstResultN}, distance: {firstResultD}");
            
             Console.ReadLine();
 
