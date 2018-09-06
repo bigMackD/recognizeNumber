@@ -8,8 +8,11 @@ namespace machineLearning
 {
     class Program
     {
+
         static void Main(string[] args)
         {
+            IClassifier classifier = new BasicClassifier();
+
             string[] data = File.ReadAllLines("trainingsample.csv");
             var rawData = data.Skip(1);
             var rawDataSplitted = rawData.Select(x => x.Split(',')).ToArray();
@@ -20,6 +23,7 @@ namespace machineLearning
                 Pixels = (x.Skip(1).Select(n => int.Parse(n)).ToArray())
             }
             );
+            var recordsArray = records.ToArray();
             Console.WriteLine("Training done");
             
             
@@ -34,14 +38,11 @@ namespace machineLearning
             }
             );
             Console.WriteLine("Validate done");
-            var testArray = records.ToArray();
-            var testFirst = recordsToValidate.First();
-            IClassifier classifier = new BasicClassifier();
-            var result =  classifier.Predict(testFirst, testArray).ToArray();
-            var firstResultD = result[0].Distance;
-            var firstResultN = result[0].Number;
-            Console.WriteLine($"Number:{firstResultN}, distance: {firstResultD}");
-           
+            var recordToValidate = recordsToValidate.Last();
+
+            var results =  classifier.Predict(recordToValidate, recordsArray).ToArray();
+            var sortedResult = results.OrderBy(x => x.Distance).First(); 
+            Console.WriteLine($"Number:{sortedResult.Number}, distance: {sortedResult.Distance}");
             Console.ReadLine();
 
         }
