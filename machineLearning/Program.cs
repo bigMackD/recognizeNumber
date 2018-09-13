@@ -22,13 +22,21 @@ namespace machineLearning
             var k = int.Parse(Console.ReadLine());
 
             ReadHelper validationSamples = new ReadHelper("validationsample.csv");
+            var recordsToValidate = validationSamples.Records;
             var recordToValidate = validationSamples.Records[k];
             Console.WriteLine("Validate done");
 
-            var result =  classifier.Predict(recordToValidate, trainingSamples.Records).ToArray();
-            var sortedResult = result.OrderBy(x => x.Distance).First(); 
-            Console.WriteLine($"Probably it is {sortedResult.Number}, it's distance is {Math.Floor(sortedResult.Distance)}");
-            Console.ReadLine();
+            //var result =  classifier.Predict(recordToValidate, trainingSamples.Records).ToArray();
+            for( int i = 0; i < recordsToValidate.Length; i++)
+            {
+                
+                    var results = (classifier.Predict(recordsToValidate[i], trainingSamples.Records)).OrderBy(x => x.Distance).First();
+            }
+               
+            
+           // var sortedResult = result.OrderBy(x => x.Distance).First(); 
+           // Console.WriteLine($"Probably it is {sortedResult.Number}, it's distance is {Math.Floor(sortedResult.Distance)}");
+           // Console.ReadLine();
 
            // var results = validationSamples.Records.Select(x => classifier.Predict(x, trainingSamples.Records)).ToArray();
 
