@@ -4,7 +4,8 @@ using System.Text;
 
 namespace machineLearning
 {
-    class Methods
+    public static class Methods
     {
+       
     }
 }

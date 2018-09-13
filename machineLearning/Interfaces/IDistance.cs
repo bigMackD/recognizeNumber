@@ -14,7 +14,7 @@ namespace machineLearning.Interfaces
         public Result Between(Record a, Record b)
         {
             double distance = 0;
-            var number = a.Number;
+            var number = b.Number;
             if (a.Pixels.Length != b.Pixels.Length)
             {
                 throw new Exception("Wrong image size!");

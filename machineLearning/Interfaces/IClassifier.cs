@@ -19,7 +19,7 @@ namespace machineLearning.Interfaces
         public IEnumerable<Result> Predict(Record sampleToValidateRecord, Record[] sampleRecords) 
         {
             //throw new NotImplementedException();
-            var result = sampleRecords.Select(X => distance.Between(X, sampleToValidateRecord));
+            var result = sampleRecords.Select(X => distance.Between(sampleToValidateRecord, X));
             return result;
         }
 
